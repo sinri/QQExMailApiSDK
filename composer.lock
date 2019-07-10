@@ -1,0 +1,601 @@
+{
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "79407081a21e73f47308796d6ea8be83",
+  "packages": [
+    {
+      "name": "jaybizzle/crawler-detect",
+      "version": "v1.2.84",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/JayBizzle/Crawler-Detect.git",
+        "reference": "b7f35477a56609dd0d753c07ada912b66af3df01"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/b7f35477a56609dd0d753c07ada912b66af3df01",
+        "reference": "b7f35477a56609dd0d753c07ada912b66af3df01",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": ">=5.3.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^4.8|^5.5|^6.5",
+        "satooshi/php-coveralls": "1.*"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Jaybizzle\\CrawlerDetect\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Mark Beech",
+          "email": "m@rkbee.ch",
+          "role": "Developer"
+        }
+      ],
+      "description": "CrawlerDetect is a PHP class for detecting bots/crawlers/spiders via the user agent",
+      "homepage": "https://github.com/JayBizzle/Crawler-Detect/",
+      "keywords": [
+        "crawler",
+        "crawler detect",
+        "crawler detector",
+        "crawlerdetect",
+        "php crawler detect"
+      ],
+      "time": "2019-06-14T21:10:21+00:00"
+    },
+    {
+      "name": "jenssegers/agent",
+      "version": "v2.6.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/jenssegers/agent.git",
+        "reference": "bcb895395e460478e101f41cdab139c48dc721ce"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/jenssegers/agent/zipball/bcb895395e460478e101f41cdab139c48dc721ce",
+        "reference": "bcb895395e460478e101f41cdab139c48dc721ce",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "jaybizzle/crawler-detect": "^1.2",
+        "mobiledetect/mobiledetectlib": "^2.7.6",
+        "php": ">=5.6"
+      },
+      "require-dev": {
+        "php-coveralls/php-coveralls": "^2.1",
+        "phpunit/phpunit": "^5.0|^6.0|^7.0"
+      },
+      "suggest": {
+        "illuminate/support": "^4.0|^5.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "3.0-dev"
+        },
+        "laravel": {
+          "providers": [
+            "Jenssegers\\Agent\\AgentServiceProvider"
+          ],
+          "aliases": {
+            "Agent": "Jenssegers\\Agent\\Facades\\Agent"
+          }
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Jenssegers\\Agent\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Jens Segers",
+          "homepage": "https://jenssegers.com"
+        }
+      ],
+      "description": "Desktop/mobile user agent parser with support for Laravel, based on Mobiledetect",
+      "homepage": "https://github.com/jenssegers/agent",
+      "keywords": [
+        "Agent",
+        "browser",
+        "desktop",
+        "laravel",
+        "mobile",
+        "platform",
+        "user agent",
+        "useragent"
+      ],
+      "time": "2019-01-19T21:32:55+00:00"
+    },
+    {
+      "name": "mobiledetect/mobiledetectlib",
+      "version": "2.8.33",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/serbanghita/Mobile-Detect.git",
+        "reference": "cd385290f9a0d609d2eddd165a1e44ec1bf12102"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/cd385290f9a0d609d2eddd165a1e44ec1bf12102",
+        "reference": "cd385290f9a0d609d2eddd165a1e44ec1bf12102",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": ">=5.0.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "~4.8.35||~5.7"
+      },
+      "type": "library",
+      "autoload": {
+        "classmap": [
+          "Mobile_Detect.php"
+        ],
+        "psr-0": {
+          "Detection": "namespaced/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Serban Ghita",
+          "email": "serbanghita@gmail.com",
+          "homepage": "http://mobiledetect.net",
+          "role": "Developer"
+        }
+      ],
+      "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
+      "homepage": "https://github.com/serbanghita/Mobile-Detect",
+      "keywords": [
+        "detect mobile devices",
+        "mobile",
+        "mobile detect",
+        "mobile detector",
+        "php mobile detect"
+      ],
+      "time": "2018-09-01T15:05:15+00:00"
+    },
+    {
+      "name": "psr/log",
+      "version": "1.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/log.git",
+        "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+        "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": ">=5.3.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Log\\": "Psr/Log/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "http://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for logging libraries",
+      "homepage": "https://github.com/php-fig/log",
+      "keywords": [
+        "log",
+        "psr",
+        "psr-3"
+      ],
+      "time": "2018-11-20T15:27:04+00:00"
+    },
+    {
+      "name": "psr/simple-cache",
+      "version": "1.0.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/simple-cache.git",
+        "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+        "reference": "408d5eafb83c57f6365a3ca330ff23aa4a5fa39b",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": ">=5.3.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\SimpleCache\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "http://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interfaces for simple caching",
+      "keywords": [
+        "cache",
+        "caching",
+        "psr",
+        "psr-16",
+        "simple-cache"
+      ],
+      "time": "2017-10-23T01:57:42+00:00"
+    },
+    {
+      "name": "ralouphie/getallheaders",
+      "version": "2.0.5",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ralouphie/getallheaders.git",
+        "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+        "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": ">=5.3"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "~3.7.0",
+        "satooshi/php-coveralls": ">=1.0"
+      },
+      "type": "library",
+      "autoload": {
+        "files": [
+          "src/getallheaders.php"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Ralph Khattar",
+          "email": "ralph.khattar@gmail.com"
+        }
+      ],
+      "description": "A polyfill for getallheaders.",
+      "time": "2016-02-11T07:05:27+00:00"
+    },
+    {
+      "name": "ralouphie/mimey",
+      "version": "1.0.8",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/ralouphie/mimey.git",
+        "reference": "d69688d4856daa13a9124c819d148ccc2235dea2"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/ralouphie/mimey/zipball/d69688d4856daa13a9124c819d148ccc2235dea2",
+        "reference": "d69688d4856daa13a9124c819d148ccc2235dea2",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "php": "^5.3|^7.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "~3.7.0",
+        "satooshi/php-coveralls": ">=1.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Mimey\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Ralph Khattar",
+          "email": "ralph.khattar@gmail.com"
+        }
+      ],
+      "description": "PHP package for converting file extensions to MIME types and vice versa.",
+      "time": "2017-01-27T20:57:22+00:00"
+    },
+    {
+      "name": "sinri/ark",
+      "version": "2.7.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/sinri/Ark.git",
+        "reference": "a8e8733307972578415a975aebc2de2b26a49138"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/sinri/Ark/zipball/a8e8733307972578415a975aebc2de2b26a49138",
+        "reference": "a8e8733307972578415a975aebc2de2b26a49138",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "ext-json": "*",
+        "jenssegers/agent": "^2.6",
+        "php": "~7.0",
+        "ralouphie/getallheaders": "^2.0",
+        "ralouphie/mimey": "^1.0",
+        "sinri/ark-cache": "~2.0",
+        "sinri/ark-core": "~2.2"
+      },
+      "require-dev": {
+        "ext-pcntl": "*",
+        "sinri/ark-curl": "~2.0",
+        "sinri/ark-pdo": "~1.5",
+        "sinri/ark-queue": "~2.2"
+      },
+      "suggest": {
+        "sinri/ark-couchdb": "~1.0",
+        "sinri/ark-curl": "~2.0",
+        "sinri/ark-mail": "~1.2",
+        "sinri/ark-mysqli": "~1.2",
+        "sinri/ark-pdo": "~1.5",
+        "sinri/ark-qr-builder": "~1.0",
+        "sinri/ark-redis": "~1.1",
+        "sinri/ark-sqlite3": "~1.1"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "sinri\\ark\\": ""
+        },
+        "files": [
+          "QuickArk.php"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Sinri Edogawa",
+          "email": "e.joshua.s.e@gmail.com"
+        }
+      ],
+      "description": "A fundamental toolkit for PHP.",
+      "time": "2019-05-30T15:01:56+00:00"
+    },
+    {
+      "name": "sinri/ark-cache",
+      "version": "2.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/sinri/Ark-Cache.git",
+        "reference": "224d0b4aa9ae54c3f05348cd11b918c2836b1d3d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/sinri/Ark-Cache/zipball/224d0b4aa9ae54c3f05348cd11b918c2836b1d3d",
+        "reference": "224d0b4aa9ae54c3f05348cd11b918c2836b1d3d",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "psr/simple-cache": "~1.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "sinri\\ark\\cache\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Sinri Edogawa",
+          "email": "e.joshua.s.e@gmail.com"
+        }
+      ],
+      "description": "The cache component for Ark 2",
+      "time": "2019-03-26T09:08:43+00:00"
+    },
+    {
+      "name": "sinri/ark-core",
+      "version": "2.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/sinri/Ark-Core.git",
+        "reference": "271e70400b533e4a91976d152bc9978ba527779b"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/sinri/Ark-Core/zipball/271e70400b533e4a91976d152bc9978ba527779b",
+        "reference": "271e70400b533e4a91976d152bc9978ba527779b",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "ext-json": "*",
+        "psr/log": "~1.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "sinri\\ark\\core\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Sinri Edogawa",
+          "email": "e.joshua.s.e@gmail.com"
+        }
+      ],
+      "description": "The core components of Ark 2",
+      "time": "2019-07-02T06:32:33+00:00"
+    },
+    {
+      "name": "sinri/ark-curl",
+      "version": "2.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/sinri/Ark-Curl.git",
+        "reference": "f4f7ae162326fdb9fa3268e6500cd6a1834f8eee"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/sinri/Ark-Curl/zipball/f4f7ae162326fdb9fa3268e6500cd6a1834f8eee",
+        "reference": "f4f7ae162326fdb9fa3268e6500cd6a1834f8eee",
+        "shasum": "",
+        "mirrors": [
+          {
+            "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+            "preferred": true
+          }
+        ]
+      },
+      "require": {
+        "ext-curl": "*",
+        "ext-json": "*",
+        "sinri/ark-core": "~2.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "sinri\\ark\\io\\curl\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Sinri Edogawa",
+          "email": "e.joshua.s.e@gmail.com"
+        }
+      ],
+      "description": "The cURL component for Ark 2.",
+      "time": "2019-01-09T03:53:08+00:00"
+    }
+  ],
+  "packages-dev": [],
+  "aliases": [],
+  "minimum-stability": "stable",
+  "stability-flags": [],
+  "prefer-stable": false,
+  "prefer-lowest": false,
+  "platform": [],
+  "platform-dev": []
+}
