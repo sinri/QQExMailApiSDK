@@ -13,6 +13,9 @@ use sinri\QQExMailApiSDK\QQExMailApiSDK;
 
 class AppMembershipSDK
 {
+    /**
+     * @var ApiCore
+     */
     protected $apiCore;
 
     /**
@@ -42,10 +45,12 @@ class AppMembershipSDK
     const USER_ATTRIBUTE_NEXT_LOGIN_NEED_CHANGE_PASSWORD = "cpwd_login"; // default 0 NO 1 YES
 
     /**
-     * @param $userId
-     * @param $name
-     * @param $departmentIdList
-     * @param array $otherAttributes
+     * 创建成员
+     *
+     * @param string $userId 邮箱
+     * @param string $name 成员名
+     * @param int[] $departmentIdList 部门ID数组
+     * @param array $otherAttributes 其他可选属性
      * @return bool
      * @throws Exception
      */
@@ -67,8 +72,10 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $userId
-     * @param array $otherAttributes
+     * 更新成员
+     *
+     * @param string $userId 邮箱
+     * @param array $otherAttributes 要变更的属性
      * @return bool
      * @throws Exception
      */
@@ -88,7 +95,9 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $userId
+     * 删除成员
+     *
+     * @param string $userId 邮箱
      * @return bool
      * @throws Exception
      */
@@ -105,7 +114,9 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $userId
+     * 获取成员
+     *
+     * @param string $userId 邮箱
      * @return ApiResponseEntity
      * @throws Exception
      */
@@ -123,17 +134,19 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $departmentId
-     * @param int $fetch_child // 1 or 0 from sub departments?
+     * 获取部门成员
+     *
+     * @param int $departmentId 部门ID，为1时可获取根部门下的成员
+     * @param bool $fetch_child // 1 or 0 是否递归获取子部门下面的成员
      * @return ApiResponseEntity
      * @throws Exception
      */
-    public function getUserListInDepartmentLite($departmentId, $fetch_child = 0)
+    public function getUserListInDepartmentLite($departmentId, $fetch_child = false)
     {
         $url = "user/simplelist";
         $params = [
             "department_id" => $departmentId,
-            "fetch_child" => $fetch_child,
+            "fetch_child" => ($fetch_child ? 1 : 0),
         ];
 
         $response = $this->apiCore->getFromApi($url, $params);
@@ -143,8 +156,10 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $departmentId
-     * @param int $fetch_child // 1 or 0 from sub departments?
+     * 获取部门成员（详情）
+     *
+     * @param int $departmentId 部门ID，为1时可获取根部门下的成员
+     * @param int $fetch_child // 1 or 0 是否递归获取子部门下面的成员
      * @return ApiResponseEntity
      * @throws Exception
      */
@@ -174,7 +189,9 @@ class AppMembershipSDK
 
 
     /**
-     * @param string[] $userList
+     * 批量检查帐号
+     *
+     * @param string[] $userList 邮箱数组，不超过20个
      * @return array
      * @throws Exception
      */
@@ -188,10 +205,12 @@ class AppMembershipSDK
     }
 
     /**
-     * @param string $name strlen no more than 64 and not including `\:*?"<>｜`
-     * @param int $parentId
-     * @param int $order
-     * @return int
+     * 创建部门
+     *
+     * @param string $name 部门名，长度限制为1~64个字节，字符不能包括\:*?"<>｜
+     * @param int $parentId 部门ID，为1可表示根部门
+     * @param int $order 在父部门中的次序值。order值小的排序靠前，1-10000为保留值，若使用保留值，将被强制重置为0。
+     * @return int 创建的部门id。 id为64位整型数
      * @throws Exception
      */
     public function createDepartment($name, $parentId = 1, $order = 0)
@@ -208,11 +227,12 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $id
-     * @param string $name strlen no more than 64 and not including `\:*?"<>｜`
-     * @param int $parentId
-     * @param int $order
-     * @return int
+     * 更新部门
+     * @param int $id 部门ID
+     * @param string $name 更新的部门名称。长度限制为1~64个字节，字符不能包括\:*?"<>｜。修改部门名称时指定该参数
+     * @param int $parentId 父部门id。id为1可表示根部门
+     * @param int $order 在父部门中的次序值。 order值小的排序靠前，1-10000为保留值，若使用保留值，将被强制重置为0。
+     * @return bool
      * @throws Exception
      */
     public function updateDepartment($id, $name = null, $parentId = null, $order = null)
@@ -231,7 +251,11 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $id
+     * 删除部门
+     *
+     * （注：不能删除根部门；不能删除含有子部门、成员的部门）
+     *
+     * @param int $id 部门ID
      * @return bool
      * @throws Exception
      */
@@ -248,7 +272,9 @@ class AppMembershipSDK
     }
 
     /**
-     * @param int $id would include nested
+     * 获取部门列表
+     *
+     * @param int $id 部门id。获取指定部门及其下的子部门。id为1时可获取根部门下的子部门。
      * @return array
      * @throws Exception
      */
@@ -265,8 +291,10 @@ class AppMembershipSDK
     }
 
     /**
-     * @param string $name
-     * @param int $fuzzy 0 or 1
+     * 查找部门
+     *
+     * @param string $name 部门名字
+     * @param int $fuzzy 0 or 1 是否模糊搜索
      * @return array
      * @throws Exception
      */
@@ -292,13 +320,15 @@ class AppMembershipSDK
     const ALLOW_GROUP_FOR_LISTED = 3;
 
     /**
-     * @param $groupEmail
-     * @param $groupName
-     * @param array $userList
-     * @param array $groupList
-     * @param array $departmentList
-     * @param int $allow_type
-     * @param null $allowUserList if allow type is 3
+     * 创建邮件群组
+     *
+     * @param string $groupEmail 邮箱组
+     * @param string $groupName 组名
+     * @param string[] $userList 成员帐号的数组
+     * @param string[] $groupList 成员邮件群组的数组
+     * @param int[] $departmentList 成员部门的数组
+     * @param int $allow_type 群发权限。0: 企业成员, 1任何人， 2:组内成员，3:指定成员
+     * @param string[] $allowUserList 群发权限为指定成员(3)时，需要指定成员，为成员邮箱数组
      * @return bool
      * @throws Exception
      */
@@ -321,13 +351,15 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $groupEmail
-     * @param null $groupName
-     * @param null $userList
-     * @param null $groupList
-     * @param null $departmentList
-     * @param null $allow_type
-     * @param null $allowUserList
+     * 更新邮件群组
+     *
+     * @param string $groupEmail 邮件组
+     * @param string $groupName 邮件组命名
+     * @param string[] $userList 成员帐号
+     * @param string[] $groupList 成员邮件群组
+     * @param int[] $departmentList 成员部门
+     * @param int $allow_type 群发权限。0: 企业成员,1任何人，2:组内成员，3:指定成员
+     * @param string[] $allowUserList 群发权限为指定成员(3)时，需要指定成员
      * @return bool
      * @throws Exception
      */
@@ -351,7 +383,9 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $groupEmail
+     * 删除邮件群组
+     *
+     * @param string $groupEmail 邮件组
      * @return bool
      * @throws Exception
      */
@@ -366,7 +400,9 @@ class AppMembershipSDK
     }
 
     /**
-     * @param $groupEmail
+     * 获取邮件群组信息
+     *
+     * @param string $groupEmail 邮件组
      * @return ApiResponseEntity
      * @throws Exception
      */

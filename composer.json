@@ -1,33 +1,34 @@
 {
-  "name": "sinri/qq-exmail-api-sdk",
-  "description": "QQ ExMail API SDK",
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Sinri Edogawa",
-      "email": "e.joshua.s.e@gmail.com"
+    "name": "sinri/qq-exmail-api-sdk",
+    "description": "QQ ExMail API SDK",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sinri Edogawa",
+            "email": "e.joshua.s.e@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "sinri/ark-cache": "~2.0",
+        "sinri/ark-core": "~2.2",
+        "sinri/ark-curl": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "sinri\\QQExMailApiSDK\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "sinri\\QQExMailApiSDK\\test\\": "test/"
+        }
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
     }
-  ],
-  "minimum-stability": "stable",
-  "require": {
-    "sinri/ark": "^2.7",
-    "sinri/ark-curl": "^2.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "sinri\\QQExMailApiSDK\\": "src/"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "sinri\\QQExMailApiSDK\\test\\": "test/"
-    }
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packagist.laravel-china.org"
-    }
-  ]
 }

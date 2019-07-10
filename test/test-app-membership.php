@@ -37,9 +37,19 @@ try {
 }
 
 try {
+    $logger->info("checking accounts' availability...");
+    $list = $sdk->appMembership()->batchCheckAccounts(['a@v.com', 'b@v.com', 'c@v.com']);
+    $logger->info("the checked result", ['accounts' => $list]);
+} catch (Exception $exception) {
+    $logger->error("Cannot check accounts. " . $exception->getMessage(), ["code" => $exception->getCode()]);
+}
+
+die();
+
+try {
     $logger->info("create a temp email account...");
     $done = $sdk->appMembership()->createUser(
-        "sinri-api-sdk-tester@leqee.com",
+        "sinri-api-sdk-tester@v.com",
         "Tester For Api SDK",
         [1],
         [

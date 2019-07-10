@@ -12,6 +12,9 @@ use sinri\QQExMailApiSDK\QQExMailApiSDK;
 
 class AppLogSDK
 {
+    /**
+     * @var ApiCore
+     */
     protected $apiCore;
 
     /**
@@ -29,6 +32,10 @@ class AppLogSDK
     }
 
     /**
+     * 查询邮件概况
+     *
+     * 针对某域名，统计一段时间内，发信总量和收信总量
+     *
      * @param $domain
      * @param $begin_date
      * @param $end_date
@@ -79,6 +86,10 @@ class AppLogSDK
     const MAIL_STATUS_RECEIVED_TO_FOLDER = 14;
 
     /**
+     * 查询邮件
+     *
+     * 查询一段时间内的邮件来往，可选邮箱名和邮件主题作为条件，并获取各邮件处理状况。
+     *
      * @param string $begin_date y-m-d
      * @param string $end_date y-m-d
      * @param int $mail_type MAIL_TYPE_*
@@ -126,11 +137,15 @@ class AppLogSDK
     const LOGIN_TYPE_ELSE = 5;
 
     /**
-     * @param $begin_date
-     * @param $end_date
-     * @param null $user_id
-     * @param null $subject
-     * @return mixed|null
+     * 查询成员登录
+     *
+     * 查询某成员邮箱在一定时期内的登录记录，包括各次IP和登录类型。
+     *
+     * @param string $begin_date Y-m-d
+     * @param string $end_date Y-m-d
+     * @param string $user_id email
+     * @param string $subject
+     * @return array
      * @throws Exception
      */
     public function getMemberLoginStat($begin_date, $end_date, $user_id = null, $subject = null)
@@ -181,9 +196,13 @@ class AppLogSDK
     const JOB_TYPE_BATCH_ELSE = 0;
 
     /**
-     * @param $begin_date
-     * @param $end_date
-     * @return mixed|null
+     * 查询批量任务
+     *
+     * 不明觉厉
+     *
+     * @param string $begin_date Y-m-d
+     * @param string $end_date Y-m-d
+     * @return array
      * @throws Exception
      */
     public function getBatchJobStatus($begin_date, $end_date)
@@ -287,9 +306,13 @@ class AppLogSDK
     const OPERATION_TYPE_DISABLE_API = 41;//停用接口
 
     /**
-     * @param $begin_date
-     * @param $end_date
-     * @param $type
+     * 查询操作记录
+     *
+     * 审计用。
+     *
+     * @param string $begin_date Y-m-d
+     * @param string $end_date Y-m-d
+     * @param int $type
      * @return array
      * @throws Exception
      */

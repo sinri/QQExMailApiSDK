@@ -49,9 +49,9 @@ class ApiCore
 
     /**
      * ApiCore constructor.
-     * @param $appCode
-     * @param $corpId
-     * @param $appSecret
+     * @param string $appCode
+     * @param string $corpId
+     * @param string $appSecret
      */
     public function __construct($appCode, $corpId, $appSecret)
     {
