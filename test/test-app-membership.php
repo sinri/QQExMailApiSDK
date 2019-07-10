@@ -44,8 +44,6 @@ try {
     $logger->error("Cannot check accounts. " . $exception->getMessage(), ["code" => $exception->getCode()]);
 }
 
-die();
-
 try {
     $logger->info("create a temp email account...");
     $done = $sdk->appMembership()->createUser(
@@ -63,7 +61,7 @@ try {
 
 try {
     $logger->info("delete a temp email account...");
-    $done = $sdk->appMembership()->deleteUser("sinri-api-sdk-tester@leqee.com");
+    $done = $sdk->appMembership()->deleteUser("sinri-api-sdk-tester@v.com");
     $logger->info("deleted temp email", ["done" => $done]);
 } catch (Exception $exception) {
     $logger->error("Cannot create email. " . $exception->getMessage(), ["code" => $exception->getCode()]);
