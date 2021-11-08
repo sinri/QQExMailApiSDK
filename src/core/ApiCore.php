@@ -69,12 +69,10 @@ class ApiCore
     {
         $cacheKey = "QQExMailApiSDK_" . $this->appCode . "_access_token";
 
-        if (self::getArkCacheInstance()) {
-            $accessToken = self::getArkCacheInstance()->getObject($cacheKey);
-            if ($accessToken) {
-                $this->logger->debug("getAccessTokenForApp: cache available, use cached access token!");
-                return $accessToken;
-            }
+        $accessToken = $this->getArkCacheInstance()->getObject($cacheKey);
+        if ($accessToken) {
+            $this->logger->debug("getAccessTokenForApp: cache available, use cached access token!");
+            return $accessToken;
         }
 
         $url = self::API_ROOT . "gettoken?corpid=" . urlencode($this->corpId) . "&corpsecret=" . urlencode($this->appSecret);
@@ -94,10 +92,8 @@ class ApiCore
             return false;
         }
 
-        if (self::getArkCacheInstance()) {
-            $saved = self::getArkCacheInstance()->saveObject($cacheKey, $accessToken, $expiresIn);
-            $this->logger->debug("getAccessTokenForApp: cached access token!", ["saved" => $saved, 'raw' => [$this->appCode . ".access_token", $accessToken, $expiresIn]]);
-        }
+        $saved = $this->getArkCacheInstance()->saveObject($cacheKey, $accessToken, $expiresIn);
+        $this->logger->debug("getAccessTokenForApp: cached access token!", ["saved" => $saved, 'raw' => [$this->appCode . ".access_token", $accessToken, $expiresIn]]);
 
         return $accessToken;
     }
@@ -116,8 +112,7 @@ class ApiCore
             ->setQueryField("access_token", $this->getAccessTokenForApp())
             ->setPostContent($params)
             ->execute(true);
-        $result = new ApiResponseEntity($response);
-        return $result;
+        return new ApiResponseEntity($response);
     }
 
     /**
@@ -135,8 +130,7 @@ class ApiCore
             $curl->setQueryField($key, $value);
         }
         $response = $curl->execute();
-        $result = new ApiResponseEntity($response);
-        return $result;
+        return new ApiResponseEntity($response);
     }
 
     /**

@@ -4,11 +4,11 @@
 namespace sinri\QQExMailApiSDK\AppMembership;
 
 
-use Exception;
 use sinri\ark\cache\ArkCache;
 use sinri\ark\core\ArkLogger;
 use sinri\QQExMailApiSDK\core\ApiCore;
 use sinri\QQExMailApiSDK\core\ApiResponseEntity;
+use sinri\QQExMailApiSDK\core\QQExMailApiError;
 use sinri\QQExMailApiSDK\QQExMailApiSDK;
 
 class AppMembershipSDK
@@ -52,7 +52,7 @@ class AppMembershipSDK
      * @param int[] $departmentIdList 部门ID数组
      * @param array $otherAttributes 其他可选属性
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function createUser($userId, $name, $departmentIdList, $otherAttributes = [])
     {
@@ -77,7 +77,7 @@ class AppMembershipSDK
      * @param string $userId 邮箱
      * @param array $otherAttributes 要变更的属性
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function updateUser($userId, $otherAttributes = [])
     {
@@ -99,7 +99,7 @@ class AppMembershipSDK
      *
      * @param string $userId 邮箱
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function deleteUser($userId)
     {
@@ -118,7 +118,7 @@ class AppMembershipSDK
      *
      * @param string $userId 邮箱
      * @return ApiResponseEntity
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getUser($userId)
     {
@@ -139,11 +139,11 @@ class AppMembershipSDK
      * @param int $departmentId 部门ID，为1时可获取根部门下的成员
      * @param bool $fetch_child // 1 or 0 是否递归获取子部门下面的成员
      * @return ApiResponseEntity
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getUserListInDepartmentLite($departmentId, $fetch_child = false)
     {
-        $url = "user/simplelist";
+        $url = "user/simple" . "list";
         $params = [
             "department_id" => $departmentId,
             "fetch_child" => ($fetch_child ? 1 : 0),
@@ -161,7 +161,7 @@ class AppMembershipSDK
      * @param int $departmentId 部门ID，为1时可获取根部门下的成员
      * @param int $fetch_child // 1 or 0 是否递归获取子部门下面的成员
      * @return ApiResponseEntity
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getUserListInDepartment($departmentId, $fetch_child = 0)
     {
@@ -193,12 +193,12 @@ class AppMembershipSDK
      *
      * @param string[] $userList 邮箱数组，不超过20个
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function batchCheckAccounts($userList)
     {
-        $url = "user/batchcheck";
-        $params = ["userlist" => $userList];
+        $url = "user/batch" . "check";
+        $params = ["user" . "list" => $userList];
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
         return $response->getProperty('list');
@@ -209,9 +209,9 @@ class AppMembershipSDK
      *
      * @param string $name 部门名，长度限制为1~64个字节，字符不能包括\:*?"<>｜
      * @param int $parentId 部门ID，为1可表示根部门
-     * @param int $order 在父部门中的次序值。order值小的排序靠前，1-10000为保留值，若使用保留值，将被强制重置为0。
+     * @param int $order 在父部门中的次序值。 order值小的排序靠前，1-10000为保留值，若使用保留值，将被强制重置为0。
      * @return int 创建的部门id。 id为64位整型数
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function createDepartment($name, $parentId = 1, $order = 0)
     {
@@ -230,10 +230,10 @@ class AppMembershipSDK
      * 更新部门
      * @param int $id 部门ID
      * @param string $name 更新的部门名称。长度限制为1~64个字节，字符不能包括\:*?"<>｜。修改部门名称时指定该参数
-     * @param int $parentId 父部门id。id为1可表示根部门
+     * @param int $parentId 父部门id。 id为1可表示根部门
      * @param int $order 在父部门中的次序值。 order值小的排序靠前，1-10000为保留值，若使用保留值，将被强制重置为0。
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function updateDepartment($id, $name = null, $parentId = null, $order = null)
     {
@@ -257,7 +257,7 @@ class AppMembershipSDK
      *
      * @param int $id 部门ID
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function deleteDepartment($id)
     {
@@ -276,7 +276,7 @@ class AppMembershipSDK
      *
      * @param int $id 部门id。获取指定部门及其下的子部门。id为1时可获取根部门下的子部门。
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getDepartmentList($id)
     {
@@ -296,7 +296,7 @@ class AppMembershipSDK
      * @param string $name 部门名字
      * @param int $fuzzy 0 or 1 是否模糊搜索
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function searchDepartmentList($name, $fuzzy = 0)
     {
@@ -330,7 +330,7 @@ class AppMembershipSDK
      * @param int $allow_type 群发权限。0: 企业成员, 1任何人， 2:组内成员，3:指定成员
      * @param string[] $allowUserList 群发权限为指定成员(3)时，需要指定成员，为成员邮箱数组
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function createGroup($groupEmail, $groupName, $userList = [], $groupList = [], $departmentList = [], $allow_type = 1, $allowUserList = null)
     {
@@ -361,21 +361,21 @@ class AppMembershipSDK
      * @param int $allow_type 群发权限。0: 企业成员,1任何人，2:组内成员，3:指定成员
      * @param string[] $allowUserList 群发权限为指定成员(3)时，需要指定成员
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function updateGroup($groupEmail, $groupName = null, $userList = null, $groupList = null, $departmentList = null, $allow_type = null, $allowUserList = null)
     {
         $url = "group/update";
         $params = [
-            "groupid" => $groupEmail,
+            "group" . "id" => $groupEmail,
         ];
 
-        if ($groupName !== null) $params['groupname'] = $groupName;
-        if ($userList !== null) $params['userlist'] = $userList;
-        if ($groupList !== null) $params['grouplist'] = $groupList;
+        if ($groupName !== null) $params['group' . 'name'] = $groupName;
+        if ($userList !== null) $params['user' . 'list'] = $userList;
+        if ($groupList !== null) $params['group' . 'list'] = $groupList;
         if ($departmentList !== null) $params['department'] = $departmentList;
         if ($allow_type !== null) $params['allow_type'] = $allow_type;
-        if ($allowUserList != null) $params['allow_userlist'] = $allowUserList;
+        if ($allowUserList != null) $params['allow_user' . 'list'] = $allowUserList;
 
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
@@ -387,12 +387,12 @@ class AppMembershipSDK
      *
      * @param string $groupEmail 邮件组
      * @return bool
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function deleteGroup($groupEmail)
     {
         $url = "group/delete";
-        $params = ["groupid" => $groupEmail];
+        $params = ["group" . "id" => $groupEmail];
 
         $response = $this->apiCore->getFromApi($url, $params);
         $response->throwExceptionErrorOccurs();
@@ -404,12 +404,12 @@ class AppMembershipSDK
      *
      * @param string $groupEmail 邮件组
      * @return ApiResponseEntity
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getGroup($groupEmail)
     {
         $url = "group/get";
-        $params = ["groupid" => $groupEmail];
+        $params = ["group" . "id" => $groupEmail];
 
         $response = $this->apiCore->getFromApi($url, $params);
         $response->throwExceptionErrorOccurs();

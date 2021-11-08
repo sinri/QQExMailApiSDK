@@ -4,10 +4,10 @@
 namespace sinri\QQExMailApiSDK\AppLog;
 
 
-use Exception;
 use sinri\ark\cache\ArkCache;
 use sinri\ark\core\ArkLogger;
 use sinri\QQExMailApiSDK\core\ApiCore;
+use sinri\QQExMailApiSDK\core\QQExMailApiError;
 use sinri\QQExMailApiSDK\QQExMailApiSDK;
 
 class AppLogSDK
@@ -40,11 +40,11 @@ class AppLogSDK
      * @param $begin_date
      * @param $end_date
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getMailsSummary($domain, $begin_date, $end_date)
     {
-        $url = 'log/mailstatus';
+        $url = 'log/mail' . 'status';
         $params = [
             'domain' => $domain,
             'begin_date' => $begin_date,
@@ -52,9 +52,9 @@ class AppLogSDK
         ];
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
-        $sendsum = $response->getProperty('sendsum', 0);
-        $recvsum = $response->getProperty('recvsum', 0);
-        return ["sent" => $sendsum, "received" => $recvsum];
+        $send_sum = $response->getProperty('send' . 'sum', 0);
+        $recv_sum = $response->getProperty('recv' . 'sum', 0);
+        return ["sent" => $send_sum, "received" => $recv_sum];
     }
 
     /*
@@ -96,7 +96,7 @@ class AppLogSDK
      * @param string $user_id
      * @param string $subject
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getConfirmMailsStatus($begin_date, $end_date, $mail_type, $user_id = null, $subject = null)
     {
@@ -104,7 +104,7 @@ class AppLogSDK
         $params = [
             "begin_date" => $begin_date,//y-m-d
             "end_date" => $end_date,//y-m-d
-            "mailtype" => $mail_type,// int
+            "mail'.'type" => $mail_type,// int
             //	"userid":"zhangsanp@gzdev.com",
             //	"subject":"test"
         ];
@@ -118,8 +118,7 @@ class AppLogSDK
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
 
-        $list = $response->getProperty('list', []);
-        return $list;
+        return $response->getProperty('list', []);
     }
 
     /*
@@ -146,7 +145,7 @@ class AppLogSDK
      * @param string $user_id email
      * @param string $subject
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getMemberLoginStat($begin_date, $end_date, $user_id = null, $subject = null)
     {
@@ -167,8 +166,7 @@ class AppLogSDK
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
 
-        $list = $response->getProperty('list', []);
-        return $list;
+        return $response->getProperty('list', []);
     }
 
     /*
@@ -178,7 +176,7 @@ class AppLogSDK
         3：删除公告
         4：批量添加别名
         5：发布公告
-        6：RTX帐号关联
+        6：RTX账号关联
         7：设置企业签名档
         8：取消企业签名档
         9：开通成员
@@ -203,11 +201,11 @@ class AppLogSDK
      * @param string $begin_date Y-m-d
      * @param string $end_date Y-m-d
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getBatchJobStatus($begin_date, $end_date)
     {
-        $url = "log/batchjob";
+        $url = "log/batch'.'job";
         $params = [
             "begin_date" => $begin_date,//y-m-d
             "end_date" => $end_date,//y-m-d
@@ -215,8 +213,7 @@ class AppLogSDK
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
 
-        $list = $response->getProperty('list', []);
-        return $list;
+        return $response->getProperty('list', []);
     }
 
     /*
@@ -314,7 +311,7 @@ class AppLogSDK
      * @param string $end_date Y-m-d
      * @param int $type
      * @return array
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function getOperationRecords($begin_date, $end_date, $type)
     {
@@ -327,7 +324,6 @@ class AppLogSDK
         $response = $this->apiCore->postJsonToApi($url, $params);
         $response->throwExceptionErrorOccurs();
 
-        $list = $response->getProperty('list', []);
-        return $list;
+        return $response->getProperty('list', []);
     }
 }

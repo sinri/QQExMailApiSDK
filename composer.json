@@ -11,9 +11,10 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "sinri/ark-cache": "~2.0",
-        "sinri/ark-core": "~2.2",
-        "sinri/ark-curl": "^2.0"
+        "sinri/ark-cache": "~2.5",
+        "sinri/ark-core": "~2.7",
+        "sinri/ark-curl": "~2.1",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {

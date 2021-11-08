@@ -4,7 +4,6 @@
 namespace sinri\QQExMailApiSDK\core;
 
 
-use Exception;
 use sinri\ark\core\ArkHelper;
 
 class ApiResponseEntity
@@ -26,12 +25,12 @@ class ApiResponseEntity
     }
 
     /**
-     * @throws Exception
+     * @throws QQExMailApiError
      */
     public function throwExceptionErrorOccurs()
     {
         if (!empty($this->errCode)) {
-            throw new Exception($this->errMsg, $this->errCode);
+            throw new QQExMailApiError($this->errMsg, $this->errCode);
         }
     }
 
