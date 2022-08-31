@@ -10,6 +10,7 @@ use sinri\ark\core\ArkHelper;
 use sinri\ark\core\ArkLogger;
 use sinri\QQExMailApiSDK\AppLog\AppLogSDK;
 use sinri\QQExMailApiSDK\AppMembership\AppMembershipSDK;
+use sinri\QQExMailApiSDK\AppSettings\AppSettingsSDK;
 
 class QQExMailApiSDK
 {
@@ -36,6 +37,10 @@ class QQExMailApiSDK
      * @var AppMembershipSDK
      */
     protected $appMembershipSDK;
+    /**
+     * @var AppSettingsSDK
+     */
+    protected $appSettingsSDK;
 
     public function __construct($config)
     {
@@ -89,6 +94,22 @@ class QQExMailApiSDK
             );
         }
         return $this->appMembershipSDK;
+    }
+
+    /**
+     * @return AppSettingsSDK
+     */
+    public function appSettings()
+    {
+        if (!$this->appSettingsSDK) {
+            $this->appSettingsSDK = new AppSettingsSDK(
+                ArkHelper::readTarget($this->config, [self::CORP_ID]),
+                ArkHelper::readTarget($this->config, [self::APP_CODE_SETTINGS]),
+                $this->cache,
+                $this->logger
+            );
+        }
+        return $this->appSettingsSDK;
     }
 
     /**
